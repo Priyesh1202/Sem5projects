@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Lora');
+
+body{   
+    background: black;  
+}  
+
+#frm{  
+    border: solid #80ced7 1px;  
+    width:25%;  
+    font-size: 1.09em;
+    font-family: 'Lora', serif;
+    border-radius: 5px;  
+    margin: 120px auto;  
+    background: white;  
+    padding: 25px 15px 0px 15px;  
+}  
+
+#btn{  
+    color: white;  
+    background: #007ea7;  
+    padding: 7px;  
+    margin-left: 70%;  
+}
