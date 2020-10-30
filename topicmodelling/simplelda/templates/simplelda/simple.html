@@ -1,0 +1,24 @@
+{% for topic in res %}
+<h3>{{topic}}<h3>
+{% endfor %}
+{% if one %}
+<form id='similarity' method="POST" action="{% url 'simple'%}">
+{% csrf_token %}
+    <input type="text" placeholder={{one}} name="doc1" style="width: 800px">
+    <br />
+    <input type="text" placeholder={{two}} name="doc2" style="width: 800px">
+    <br />
+    <button type="submit">Compare</button>
+</form>
+
+<h2>Similarity between the 2 document is : {{sim}}</h2>
+{% else %}
+<form id='similarity' method="POST" action="{% url 'simple'%}">
+{% csrf_token %}
+    <input type="text" placeholder="Enter document number " name="doc1" style="width: 800px">
+    <br />
+    <input type="text" placeholder="Enter document number" name="doc2" style="width: 800px">
+    <br />
+    <button type="submit">Compare</button>
+</form>
+{% endif %}
