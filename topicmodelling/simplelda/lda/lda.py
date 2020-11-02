@@ -28,9 +28,15 @@ class LDA:
         
 
     def getData(self):
-        if self.data == None:
+        if os.path.exists("json/data.json"):
+            print("Here")
+            with open('json/data.json', 'r') as fp:
+                self.data = json.load(fp)
+        else:
             data, _ = fetch_20newsgroups(shuffle=True, random_state=1, remove=('headers', 'footers', 'quotes'),return_X_y=True)
             self.data = data
+            with open('json/data.json', 'w') as fp:
+                json.dump(data, fp, indent=4)
 
     def getVocab(self):
         if os.path.exists("json/docs.json") and os.path.exists("json/vocab.json"):
