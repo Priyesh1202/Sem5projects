@@ -1,8 +1,121 @@
-Hi
 
-<form method="POST" action="{% url 'simple' %}">
-{% csrf_token %}
-    <button type='submit' >
-        Simple
-    </button>
-</form>
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+   {% load static %}
+   <title>Topic Modelling</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+ <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ <style>
+ body {
+   font: 20px Montserrat, sans-serif;
+   line-height: 1.8;
+   color: #f5f6f7;
+ }
+ p {font-size: 18px;}
+ .margin {margin-bottom: 45px;}
+ .bg-1 { 
+   background-color: #1abc9c; /* Green */
+   color: #ffffff;
+ }
+ .bg-2 { 
+   background-color: #474e5d; /* Dark Blue */
+   color: #ffffff;
+ }
+ .bg-3 { 
+   background-color: #ffffff; /* White */
+   color: #555555;
+ }
+ .bg-4 { 
+   background-color: #2f2f2f; /* Black Gray */
+   color: #fff;
+ }
+ .container-fluid {
+   padding-top: 70px;
+   padding-bottom: 70px;
+ }
+ .navbar {
+   padding-top: 15px;
+   padding-bottom: 15px;
+   border: 0;
+   border-radius: 0;
+   margin-bottom: 0;
+   font-size: 12px;
+   letter-spacing: 5px;
+ }
+ .navbar-nav  li a:hover {
+   color: #1abc9c !important;
+ }
+ </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-default">
+ <div class="container">
+   <div class="navbar-header">
+     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+       <span class="icon-bar"></span>
+       <span class="icon-bar"></span>
+       <span class="icon-bar"></span>                        
+     </button>
+     <a class="navbar-brand" href="{% url 'home' %}">TOPIC MODELLING</a>
+   </div>
+   <div class="collapse navbar-collapse" id="myNavbar">
+     <ul class="nav navbar-nav navbar-right">
+       <li><a href="{% url 'derivation' %}">DERIVATION</a></li>
+       <li><a href="{% url 'about' %}">ABOUT US</a></li>
+     </ul>
+   </div>
+ </div>
+</nav>
+
+<!-- First Container -->
+<div class="container-fluid bg-1 text-center">
+ <h3 class="margin">What is topic modelling?</h3>
+ <p>Topic Modelling is a branch of Natural Language Processing(NLP).Topic modelling provides us with methods to organize, understand and summarize large collections of textual information. It helps in- Discovering hidden topical patterns that are present across the collection, annotating documents according to these topics.Topic modeling is an efficient way to make sense of the large volume of text. Google and many other search engines use Topic Modelling as a means to make sense of the vast data available on internet searches.</p>
+</div>
+
+<!-- Second Container -->
+<div class="container-fluid bg-2 text-center">
+ <h3 class="margin">What is LDA, the model and our approach?</h3>
+ <p>Latent Dirichlet Allocation is one of the most useful ways to perform topic modelling.LDA can be described as an unsupervised, generative probabilistic model for collections of
+  discrete data such as a text corpus. It is a three level hierarchical Bayesian model in which each document from a set of documents can be described as a distribution of topics. Each topic in turn can be described as a distribution of words.We define the total probability as follows:
+ </p>  
+ <img src="{%  static 'simplelda/1.jpeg' %}" style="display:inline">
+ <p><img src="{%  static 'simplelda/2.jpeg' %}"></p>  
+</div>
+
+<!-- Third Container (Grid) -->
+<div class="container-fluid bg-3 text-center">
+  <h3 class="margin"></h3>
+ <h3><img src="{%  static 'simplelda/3.jpeg' %}"></h3>
+ <p>The plane model above gives an overview of how the model works.With the input of alpha and beta as parameters to the Dirichlet distributions of theta and phi , these in turn form the parameters of multinomial distributions of Z and W. W is dependent on both Z(topics) and phi.Hence our probabilistic model is: </p>  
+ <img src="{%  static 'simplelda/4.jpeg' %}" style="display:inline">
+ <p>Learning the various distributions (the set of topics, their associated word probabilities, the topic of each word, and the particular topic mixture of each document) is a problem of statistical inference. Some ways to do so include Expectation Maximization Algorithm, Monte Carlo sampling, Gibbs sampling,etc.
+  Our way of approach to learn the various distributions will be done by Gibbs Sampling. Gibbs sampling in an iterative generative process . For our problem certain conditions exist that allow us to use a modified version known as Collapsed Gibbs Sampling.
+  A collapsed Gibbs sampler integrates out (marginalizes over) one or more variables when sampling for some other variable.
+  </p>
+</div>
+
+<!-- Footer -->
+<footer class="container-fluid bg-4 text-center">
+  <p>We have implemented our algorithm for sampling the topic assigned to a word. To see this in action click on the button below:</p>
+  <form method="POST" action="{% url 'simple' %}">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-default btn-lg">
+            Try It Now!
+    </form> 
+</button>
+<br>
+ <!-- <p>Topic Modelling</p>  -->
+</footer>
+
+</body>
+</html>
+

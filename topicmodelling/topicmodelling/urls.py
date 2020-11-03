@@ -21,4 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',simplelda.views.home, name='home'),
     path('simple/',simplelda.views.simple,name='simple'),
+    path('simple/derivation', simplelda.views.der, name='derivation'),
+    path('aboutus/',simplelda.views.about, name='about')
 ]
